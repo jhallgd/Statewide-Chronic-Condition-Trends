@@ -3,7 +3,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 from datetime import datetime
-from batch_ingest import ingest_data
+from batch_ingest_CMS import ingest_data
 from transform import transform_data
 
 default_args = {
@@ -20,7 +20,7 @@ default_args = {
 dag = DAG(
     'batch_ingest_dag',
     default_args=default_args,
-    description='ingest stock data',
+    description='ingest CMS data',
     schedule_interval=timedelta(days=1),
 )
 
