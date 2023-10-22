@@ -18,9 +18,9 @@ default_args = {
 }
 
 dag = DAG(
-    'batch_ingest_dag',
+    'CMS Chronic Condition Dag',
     default_args=default_args,
-    description='ingest CMS data',
+    description='Ingest, transform, visualize CMS data',
     schedule_interval=timedelta(days=1),
 )
 

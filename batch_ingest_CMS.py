@@ -23,9 +23,9 @@ def ingest_data():
         2007: '4b079921-8e18-463f-91cc-beb538004498'
     }
 
-    # The URL to Data.CMS.gov's JSON API.
+    # Two parts of the URL to Data.CMS.gov JSON API.
     dataCmsAptFront = 'https://data.cms.gov/data-api/v1/dataset/'
-    dataCmsAptBack = '/data?keyword=State&offset=0&size=500000'
+    dataCmsAptBack = '/data?filter[Bene_Age_Lvl]=All&filter[Bene_Geo_Lvl]=State&filter[Bene_Demo_Lvl]=All&filter[Bene_Demo_Desc]=All&offset=0&size=5000'
 
     # Create Blank DataFrame to store all information.
     columnHeaders = ['',
