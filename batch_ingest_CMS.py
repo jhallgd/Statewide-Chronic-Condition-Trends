@@ -27,33 +27,15 @@ def ingest_data():
     dataCmsAptFront = 'https://data.cms.gov/data-api/v1/dataset/'
     dataCmsAptBack = '/data?filter[Bene_Age_Lvl]=All&filter[Bene_Geo_Lvl]=State&filter[Bene_Demo_Lvl]=All&filter[Bene_Demo_Desc]=All&offset=0&size=5000'
 
-    # Create Blank DataFrame to store all information.
-    columnHeaders = ['',
-                     'Bene_Geo_Lvl',
-                     'Bene_Geo_Desc',
-                     'Bene_Geo_Cd',
-                     'Bene_Age_Lvl',
-                     'Bene_Demo_Lvl',
-                     'Bene_Demo_Desc',
-                     'Bene_Cond',
-                     'Prvlnc',
-                     'Tot_Mdcr_Stdzd_Pymt_PC',
-                     'Tot_Mdcr_Pymt_PC',
-                     'Hosp_Readmsn_Rate	ER_Visits_Per_1000_Benes',
-                     'Year'
-]
-    data = pd.DataFrame()
-    i = 0
-    while i < len(columnHeaders):
-        data.insert(i, columnHeaders[i], [""])
-        i+=1
-    data = data.drop([0])
+    #Add the first year.
+    data = pd.read_json(dataCmsAptFront + str(cmsIDs[0]) + dataCmsAptBack)
+    data['Year'] = list(cmsIDs)[0]
+    i = 1
 
     # Loop through the IDs to gather the data, and add a year identifier column.
     for cmsID in cmsIDs:
         tempData = pd.read_json(dataCmsAptFront + str(cmsIDs[cmsID]) + dataCmsAptBack)
         tempData['Year'] = cmsID
-        tempData.columns = columnHeaders
         data = pd.concat([data, tempData], ignore_index=True)
 
     # Adds information to the datalake

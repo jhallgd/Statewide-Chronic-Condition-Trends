@@ -5,6 +5,36 @@
 <p>Once the pipeline is complete, the goal is to have an integrated data pipeline process. Once that runs all process back-to-back without the need of break data flow. The system will make data driven decisions correctly and provide high value trends and fill the whole of unavailable data sets. I also hope to gain a better understanding of the data pipeline process and gain knowledge to build similar or more advanced systems in the future. </p>
 
 <h2>Dataset</h2>
+<p>This pipeline utilizes the Specific Chronic Conditions dataset provided by the Centers for Medicare & Medicaid Services. The dataset stores information about 21 chronic conditions among Original Medicare beneficiaries. The information is stored by state and by age group, for the purposes of this project only state information has been used.</p> 
+<p>Chronic Conditions:</p><ul>
+<li>Alcohol Abuse Drug Abuse/ Substance Abuse</li>
+<li>Alzheimer’s Disease and Related Dementia</li>
+<li>Arthritis (Osteoarthritis and Rheumatoid) </li>
+<li>Asthma </li>
+<li>Atrial Fibrillation </li>
+<li>Autism Spectrum Disorders </li>
+<li>Cancer (Breast, Colorectal, Lung, and Prostate)</li>
+<li>Chronic Kidney Disease </li>
+<li>Chronic Obstructive Pulmonary Disease </li>
+<li>Depression </li>
+<li>Diabetes  </li>
+<li>Drug Abuse/ Substance Abuse</li>
+<li>Heart Failure</li>
+<li>Hepatitis (Chronic Viral B & C)</li>
+<li>HIV/AIDS</li>
+<li>Hyperlipidemia (High cholesterol)</li>
+<li>Hypertension (High blood pressure)</li>
+<li>Ischemic Heart Disease</li>
+<li>Osteoporosis</li>
+<li>Schizophrenia and Other Psychotic Disorders</li>
+<li>Stroke</li></ul>
+<p>To view the full CMS data dictionary please <a href "https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>.The key attributes that I will be focusing it this project are: </p><ul>
+<li>Beneficiary Geographic Code (Bene_Geo_Cd) the State where the beneficiary resides.</li>
+<li>Beneficiary Chronic Condition (Bene_Cond) the Chronic condition identifier. </li>
+<li>Prevalence (Prvlnc) which are estimates of beneficiaries with that particular condition divided by the total number of beneficiaries. </li>
+<li>Hospital Readmission Rate (Hosp_Readmsn_Rate) A 30-day readmission is an admission to an acute care hospital for any cause within 30 days of discharge from an acute care hospital.</li>
+<li>Emergency Room Visits per 1,000 Beneficiaries (ER_Visits_Per_1000_Benes) Emergency department visits are presented as the number of visits per 1,000 beneficiaries.</li></ul>
+
 
 <h2>Pipeline / Architecture</h2>
 <p>The pipeline that I have decided to follow for this project is the “Data Pipeline 1 Batch – ML – Visualization” method. It meets the needs for my goal of building a system that collects, cleans, analyzes, and visualizes data. </p>
@@ -18,7 +48,7 @@ After all the trend data has been generated, the system will build a file for vi
 <h2>Data Transformation Models used</h2>
 
 <h2>Code</h2>
-<a href "https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target = "blank">GitHub Link</a>
+<p>to download the code please use this<a href "https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
 
 <h2>Thorough Investigation</h2> 
 

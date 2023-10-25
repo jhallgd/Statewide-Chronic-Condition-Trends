@@ -13,14 +13,14 @@ def transform_data():
     raw_data = np.load(s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl')), allow_pickle=True)
 
     # Get the list of states
-    stateList = raw_data.Bene_Geo_Lvl.unique()
+    stateList = raw_data.Bene_Geo_Desc.unique()
 
     # Get the list of chronic conditions
-    chronicConditions = raw_data.Bene_Demo_Desc.unique()
+    chronicConditions = raw_data.Bene_Cond.unique()
 
     # Split by state
     for state in stateList:
-        stateData = raw_data[raw_data['Bene_Geo_Lvl'] == state]
+        stateData = raw_data[raw_data['Bene_Geo_Desc'] == state]
 
         # Split by chronic condition and save.
 
@@ -28,7 +28,7 @@ def transform_data():
         counter = 1
 
         for cc in chronicConditions:
-            data = stateData[stateData['Bene_Demo_Desc'] == cc]
+            data = stateData[stateData['Bene_Cond'] == cc]
             # Drop rows with N/A
             data = data.dropna(axis=0, how='any')
 
@@ -36,7 +36,7 @@ def transform_data():
             data = data.drop_duplicates()
 
             # Drop Unknown State
-            data = data[data['Bene_Geo_Lvl'] != 'Unknown']
+            data = data[data['Bene_Geo_Desc'] != 'Unknown']
 
             # Push cleaned data to S3 bucket warehouse
             with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, state + "_" +str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
