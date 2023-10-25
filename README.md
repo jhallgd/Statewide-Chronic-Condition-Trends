@@ -28,7 +28,7 @@
 <li>Osteoporosis</li>
 <li>Schizophrenia and Other Psychotic Disorders</li>
 <li>Stroke</li></ul>
-<p>To view the full CMS data dictionary please <a href "https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>.The key attributes that I will be focusing it this project are: </p><ul>
+<p>To view the full CMS data dictionary please <a href="https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>.The key attributes that I will be focusing it this project are: </p><ul>
 <li>Beneficiary Geographic Code (Bene_Geo_Cd) the State where the beneficiary resides.</li>
 <li>Beneficiary Chronic Condition (Bene_Cond) the Chronic condition identifier. </li>
 <li>Prevalence (Prvlnc) which are estimates of beneficiaries with that particular condition divided by the total number of beneficiaries. </li>
@@ -48,7 +48,7 @@ After all the trend data has been generated, the system will build a file for vi
 <h2>Data Transformation Models used</h2>
 
 <h2>Code</h2>
-<p>to download the code please use this<a href "https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
+<p>to download the code please use this <a href="https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
 
 <h2>Thorough Investigation</h2> 
 
