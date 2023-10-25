@@ -17,7 +17,7 @@ After all the trend data has been generated, the system will build a file for vi
 
 <h2>Data Transformation Models used</h2>
 
-<h2>Code
+<h2>Code</h2>
 <a href "https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target = "blank">GitHub Link</a>
 
 <h2>Thorough Investigation</h2> 
