@@ -53,7 +53,7 @@ After all the trend data has been generated, the system will build a file for vi
 <h2>Code</h2>
 <p>to download the code please use this <a href="https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
 
-<h2>Thorough Investigation</h2> 
+<h2>Investigation</h2> 
 
 
 
