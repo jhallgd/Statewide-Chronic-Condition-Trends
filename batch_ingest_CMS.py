@@ -58,10 +58,9 @@ def ingest_data():
 
     # Adds information to the datalake
     s3 = S3FileSystem()
-    #S3 bucket directory
-    DIR = PAI.dataLakeLocation
+
     #Push data to S3 bucket as a pickle file
-    with s3.open('{}/{}'.format(DIR, 'data.pkl'), 'wb') as f:
+    with s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl'), 'wb') as f:
         f.write(pickle.dumps(data))
 
 ingest_data()

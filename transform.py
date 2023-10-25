@@ -2,54 +2,46 @@ import s3fs
 from s3fs.core import S3FileSystem
 import numpy as np
 import pickle
+import projectAdminInfo as PAI
 
 def transform_data():
 
     s3 = S3FileSystem()
+
     # S3 bucket directory (data lake)
-    DIR = ''                                    # Insert here
     # Get data from S3 bucket as a pickle file
-    raw_data = np.load(s3.open('{}/{}'.format(DIR, 'data.pkl')), allow_pickle=True)  
+    raw_data = np.load(s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl')), allow_pickle=True)
 
+    # Get the list of states
+    stateList = raw_data.Bene_Geo_Lvl.unique()
 
-    #raw_data = np.load('data.pkl', allow_pickle=True)
-    # Dividing the raw dataset for each company individual company
-    raw_data.columns = raw_data.columns.swaplevel(0,1)
-    raw_data.sort_index(axis=1, level=0, inplace=True)
-    df_aapl_rw = raw_data['AAPL']
-    df_amzn_rw = raw_data['AMZN']
-    df_googl_rw = raw_data['GOOGL']
+    # Get the list of chronic conditions
+    chronicConditions = raw_data.Bene_Demo_Desc.unique()
 
-    # Dropping rows with NaN in them
-    df_aapl = df_aapl_rw.dropna()
-    df_amzn = df_amzn_rw.dropna()
-    df_googl = df_googl_rw.dropna()
+    # Split by state
+    for state in stateList:
+        stateData = raw_data[raw_data['Bene_Geo_Lvl'] == state]
 
+        # Split by chronic condition and save.
 
-    # Removing rows with outliers
-    for col in list(df_aapl.columns)[0:4]:                                          # We ignore 'Volume' column
-        df_aapl = df_aapl.drop(df_aapl[df_aapl[col].values > 900].index)            # Values above 900 are dropped
-        df_aapl = df_aapl.drop(df_aapl[df_aapl[col].values < 0.001].index)          # Values below 0.001 are dropped
+        # Counter used to keep all files names unique.
+        counter = 1
 
-        df_amzn = df_amzn.drop(df_amzn[df_amzn[col].values > 900].index)
-        df_amzn = df_amzn.drop(df_amzn[df_amzn[col].values < 0.001].index)
+        for cc in chronicConditions:
+            data = stateData[stateData['Bene_Demo_Desc'] == cc]
+            # Drop rows with N/A
+            data = data.dropna(axis=0, how='any')
 
-        df_googl = df_googl.drop(df_googl[df_googl[col].values > 900].index)
-        df_googl = df_googl.drop(df_googl[df_googl[col].values < 0.001].index)
+            # Drop duplicate rows
+            data = data.drop_duplicates()
 
-    # Dropping duplicate rows
-    df_aapl = df_aapl.drop_duplicates()
-    df_amzn = df_amzn.drop_duplicates()
-    df_googl = df_googl.drop_duplicates()
+            # Drop Unknown State
+            data = data[data['Bene_Geo_Lvl'] != 'Unknown']
 
-    # Push cleaned data to S3 bucket warehouse
-    DIR_wh = ''                     # Insert here
-    with s3.open('{}/{}'.format(DIR_wh, 'clean_aapl.pkl'), 'wb') as f:
-        f.write(pickle.dumps(df_aapl))
-    with s3.open('{}/{}'.format(DIR_wh, 'clean_amzn.pkl'), 'wb') as f:
-        f.write(pickle.dumps(df_amzn))
-    with s3.open('{}/{}'.format(DIR_wh, 'clean_googl.pkl'), 'wb') as f:
-        f.write(pickle.dumps(df_googl))
+            # Push cleaned data to S3 bucket warehouse
+            with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, state + "_" +str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
+                f.write(pickle.dumps(data))
+            counter += 1
 
 
 
