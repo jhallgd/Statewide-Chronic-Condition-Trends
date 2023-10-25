@@ -47,6 +47,9 @@ After all the trend data has been generated, the system will build a file for vi
 
 <h2>Data Transformation Models</h2>
 
+<h2>Infographic</h2>
+<img src="https://jahgd.com//va/DataFlowChart.png" width="900px" height="auto" alt="Statewide Chronic Condition Trends Data Pipeline">
+
 <h2>Code</h2>
 <p>to download the code please use this <a href="https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
 
