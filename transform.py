@@ -18,28 +18,53 @@ def transform_data():
     # Get the list of chronic conditions
     chronicConditions = raw_data.Bene_Cond.unique()
 
-    # Split by state
-    for state in stateList:
-        stateData = raw_data[raw_data['Bene_Geo_Desc'] == state]
+    # Counter used to keep all files names unique.
+    counter = 1
 
-        # Split by chronic condition and save.
+    for cc in chronicConditions:
+        data = raw_data[raw_data['Bene_Cond'] == cc]
 
-        # Counter used to keep all files names unique.
-        counter = 1
+        # Drop rows with N/A
+        data = data.dropna(axis=0, how='any')
 
-        for cc in chronicConditions:
-            data = stateData[stateData['Bene_Cond'] == cc]
-            # Drop rows with N/A
-            data = data.dropna(axis=0, how='any')
+        data = data[data['Prvlnc'] != '']
+        data = data[data['Tot_Mdcr_Stdzd_Pymt_PC'] != '']
+        data = data[data['Tot_Mdcr_Pymt_PC'] != '']
+        data = data[data['Hosp_Readmsn_Rate'] != '']
+        data = data[data['ER_Visits_Per_1000_Benes'] != '']
 
-            # Drop duplicate rows
-            data = data.drop_duplicates()
+        # Drop duplicate rows
+        data = data.drop_duplicates()
 
-            # Drop Unknown State
-            data = data[data['Bene_Geo_Desc'] != 'Unknown']
+        # Drop Unknown State
+        data = data[data['Bene_Geo_Desc'] != 'Unknown']
+
+        # Drop incomplete datasets
+        data = data[data['Bene_Geo_Desc'] != 'Virgin Islands']
+        data = data[data['Bene_Geo_Desc'] != 'Puerto Rico']
+
+        # Assign Proper DataTypes
+        # data['Prvlnc'] = data['Prvlnc'].astype(float)
+        # data['Tot_Mdcr_Stdzd_Pymt_PC'] = data['Tot_Mdcr_Stdzd_Pymt_PC'].astype(float)
+        # data['Tot_Mdcr_Pymt_PC'] = data['Tot_Mdcr_Pymt_PC'].astype(float)
+        # data['Hosp_Readmsn_Rate'] = data['Hosp_Readmsn_Rate'].astype(float)
+        data['ER_Visits_Per_1000_Benes'] = data['ER_Visits_Per_1000_Benes'].astype(float)
+        data['Bene_Geo_Desc'] = data['Bene_Geo_Desc'].astype(str)
+
+        # Transpose the Year column
+        newData = data[['Bene_Geo_Desc', 'ER_Visits_Per_1000_Benes']][data['Year'] == 2018]
+        newData = newData.rename(columns={'ER_Visits_Per_1000_Benes': '2018'})
+        tempData = data[['Bene_Geo_Desc', 'ER_Visits_Per_1000_Benes']][data['Year'] == 2017]
+        tempData = tempData.rename(columns={'ER_Visits_Per_1000_Benes': str(2017)})
+        newData = newData.set_index('Bene_Geo_Desc').join(tempData.set_index('Bene_Geo_Desc'))
+
+        for tempDate in range(2016, 2007, -1):
+            tempData = data[['Bene_Geo_Desc', 'ER_Visits_Per_1000_Benes']][data['Year'] == tempDate]
+            tempData = tempData.rename(columns={'ER_Visits_Per_1000_Benes': str(tempDate)})
+            newData = newData.join(tempData.set_index('Bene_Geo_Desc'))
 
             # Push cleaned data to S3 bucket warehouse
-            with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, state + "_" +str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
+            with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
                 f.write(pickle.dumps(data))
             counter += 1
 

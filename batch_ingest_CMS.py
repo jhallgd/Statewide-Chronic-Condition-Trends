@@ -28,7 +28,7 @@ def ingest_data():
     dataCmsAptBack = '/data?filter[Bene_Age_Lvl]=All&filter[Bene_Geo_Lvl]=State&filter[Bene_Demo_Lvl]=All&filter[Bene_Demo_Desc]=All&offset=0&size=5000'
 
     #Add the first year.
-    data = pd.read_json(dataCmsAptFront + str(cmsIDs[0]) + dataCmsAptBack)
+    data = pd.read_json(dataCmsAptFront + str(cmsIDs[list(cmsIDs)[0]]) + dataCmsAptBack)
     data['Year'] = list(cmsIDs)[0]
     i = 1
 
@@ -44,5 +44,3 @@ def ingest_data():
     #Push data to S3 bucket as a pickle file
     with s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl'), 'wb') as f:
         f.write(pickle.dumps(data))
-
-ingest_data()
