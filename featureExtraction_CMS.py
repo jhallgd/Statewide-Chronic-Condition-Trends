@@ -2,7 +2,6 @@ import s3fs
 from s3fs.core import S3FileSystem
 import pickle
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 import projectAdminInfo as PAI
 
@@ -24,8 +23,6 @@ def feature_extract():
     features = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
 
     # Feature Extraction
-    scaler = MinMaxScaler()
-
     for fe in range(0, len(warehouseData)):
         train, test = train_test_split(warehouseData[fe], test_size=0.25, random_state=42, shuffle=True)
         X_train = train[features]

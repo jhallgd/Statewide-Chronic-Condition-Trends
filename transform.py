@@ -12,9 +12,6 @@ def transform_data():
     # Get data from S3 bucket as a pickle file
     raw_data = np.load(s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl')), allow_pickle=True)
 
-    # Get the list of states
-    stateList = raw_data.Bene_Geo_Desc.unique()
-
     # Get the list of chronic conditions
     chronicConditions = raw_data.Bene_Cond.unique()
 
@@ -64,9 +61,9 @@ def transform_data():
             newData = newData.join(tempData.set_index('Bene_Geo_Desc'))
 
             # Push cleaned data to S3 bucket warehouse
-            with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
-                f.write(pickle.dumps(data))
-            counter += 1
+        with s3.open('{}/{}'.format(PAI.dataWareHouseLocation, str(counter) + "_" + cc[:3] + '.pkl'), 'wb') as f:
+            f.write(pickle.dumps(newData))
+        counter += 1
 
 
 
