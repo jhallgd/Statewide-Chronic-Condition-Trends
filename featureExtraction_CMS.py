@@ -24,7 +24,7 @@ def feature_extract():
 
     # Feature Extraction
     for fe in range(0, len(warehouseData)):
-        train, test = train_test_split(warehouseData[fe], test_size=0.25, random_state=42, shuffle=True)
+        train, test = train_test_split(warehouseData[fe], test_size=0.25, random_state=0, shuffle=False)
         X_train = train[features]
         X_test = test[features]
         y_train = train['2018']

@@ -41,10 +41,6 @@ def transform_data():
         data = data[data['Bene_Geo_Desc'] != 'Puerto Rico']
 
         # Assign Proper DataTypes
-        # data['Prvlnc'] = data['Prvlnc'].astype(float)
-        # data['Tot_Mdcr_Stdzd_Pymt_PC'] = data['Tot_Mdcr_Stdzd_Pymt_PC'].astype(float)
-        # data['Tot_Mdcr_Pymt_PC'] = data['Tot_Mdcr_Pymt_PC'].astype(float)
-        # data['Hosp_Readmsn_Rate'] = data['Hosp_Readmsn_Rate'].astype(float)
         data['ER_Visits_Per_1000_Benes'] = data['ER_Visits_Per_1000_Benes'].astype(float)
         data['Bene_Geo_Desc'] = data['Bene_Geo_Desc'].astype(str)
 

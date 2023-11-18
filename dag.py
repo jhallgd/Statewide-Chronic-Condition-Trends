@@ -8,6 +8,7 @@ from transform import transform_data
 from featureExtraction_CMS import feature_extract
 from build_train_model_CMS import build_train
 from predict_CMS import predict
+from load_db_CMS import load_data
 
 default_args = {
     'owner': 'airflow',
@@ -57,4 +58,10 @@ predict_etl = PythonOperator(
     dag=dag,
 )
 
-ingest_etl >> transform_etl >> feature_Extraction_etl >> build_train_etl >> predict_etl
+load_etl = PythonOperator(
+    task_id='load',
+    python_callable=load_data,
+    dag=dag,
+)
+
+ingest_etl >> transform_etl >> feature_Extraction_etl >> build_train_etl >> predict_etl  >> load_etl
