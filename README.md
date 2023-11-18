@@ -31,19 +31,31 @@
 <p>To view the full CMS data dictionary please <a href="https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>. The key attributes that I will be focusing it this project are: </p><ul>
 <li>Beneficiary Geographic Code (Bene_Geo_Cd) the State where the beneficiary resides.</li>
 <li>Beneficiary Chronic Condition (Bene_Cond) the Chronic condition identifier. </li>
-<li>Prevalence (Prvlnc) which are estimates of beneficiaries with that particular condition divided by the total number of beneficiaries. </li>
-<li>Hospital Readmission Rate (Hosp_Readmsn_Rate) A 30-day readmission is an admission to an acute care hospital for any cause within 30 days of discharge from an acute care hospital.</li>
 <li>Emergency Room Visits per 1,000 Beneficiaries (ER_Visits_Per_1000_Benes) Emergency department visits are presented as the number of visits per 1,000 beneficiaries.</li></ul>
 
 
 <h2>Pipeline / Architecture</h2>
 <p>The pipeline that I have decided to follow for this project is the “Data Pipeline 1 Batch – ML – Visualization” method. It meets the needs for my goal of building a system that collects, cleans, analyzes, and visualizes data. </p>
-<p>The pipeline begins with the source data provided by Data.CMS.gov. The data will be imported from their database in the form of a JSON batch file. Multiple imports will have to be made for the previous years. The data will be imported by a command of a python document. Once the information is imported, the raw data will be stored in an Amazon S3 folder, serving as the data lake, in a large batch document in a pickle file format.
-After the raw data has been stored, a Python script using the Panda’s library will clean and transform the data. The script will be searching for rows and columns that will not be used in the later stages of the pipeline. The script will also be cleaning the data of any outliers or missing data points. Once all the information has been cleaned the new data files will be stored in a separate Amazon S3 storage folder representing the Data Warehouse. </p>
-<p>After the data has been transformed and stored, the pipeline uses the data to train a model in determining the level of chronic conditions in data that has not yet been provided. Once the model has been trained appropriately, then it will apply itself to the dataset, trend datasets that will be stored in new files inside Amazon’s S3 bucket. 
-After all the trend data has been generated, the system will build a file for visualization software to point to. A dashboard will be created to display the historic data and future trend information. Interactive tools will be available to the user to drill down into state levels. </p>
+<p>The pipeline begins with the source data provided by Data.CMS.gov. The data will be imported from their database in the form of a JSON batch file. Multiple imports will have to be made for the previous years. The data will be imported by a command of a python document. Once the information is imported, the raw data will be stored in an Amazon S3 folder, serving as the data lake, in a large batch document in a pickle file format.<br>
+After the raw data has been stored, a Python script using the Panda’s library will clean and transform the data. The script will be searching for rows and columns that will not be used in the later stages of the pipeline. The script will also be cleaning the data of any outliers or missing data points. The data set will also be rearange into a better format for machine learning. The files will be grouped by chronic condition and store all the previous years. Once all the information has been cleaned and transfromed the new data files will be stored in a separate Amazon S3 storage folder representing the Data Warehouse. </p>
+<p>The pipeline then uses the new data to train a model in determining the level of chronic conditions in data that has not yet been provided. The predicitons will be trained using historical data to predict the upcomming year. Once the model has been trained appropriately, then it will apply itself to the dataset, the trend datasets that will be stored in new files inside Amazon’s S3 bucket. 
+After all the trend data has been generated, the system will build a file for visualization software to point to. A dashboard will display the historic data and future trend information. Interactive tools will be available to the user to drill down into state levels. </p>
+
+<p><b>Pipeline Tools</b></p>
+<ul>
+  <li><a href="https://aws.amazon.com/ec2/" target="_blank">Amazon Elastic Compute Cloud</a></li>
+  <li><a href="https://aws.amazon.com/pm/serv-s3/" target="_blank">Amazon S3 Cloud Storage</a></li>
+  <li><a href="https://www.docker.com/" target="_blank">Docker</a></li>
+  <li><a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a></li>
+  <li><a href="https://www.python.org/" target="_blank">Python</a></li>
+  <li><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></li>
+  <li><a href="https://numpy.org/" target="_blank">NumPy</a></li>
+  <li><a href="https://keras.io/" target="_blank">Keras</a></li>
+  <li><a href="https://www.tableau.com/" target="_blank">Tableau</a></li>
+</ul>
 
 <h2>Data Quality Assessment</h2>
+
 
 <h2>Data Transformation Models</h2>
 
