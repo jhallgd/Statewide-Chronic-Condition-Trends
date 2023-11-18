@@ -55,9 +55,11 @@ After all the trend data has been generated, the system will build a file for vi
 </ul>
 
 <h2>Data Quality Assessment</h2>
-
+<p>I chose this data set because I believe the Centers for Medicare & Medicaid Services can provide accurate, complete, valid, consistent information regarding Medicare beneficiaries. Using this information at the core of my pipeline will ensure that I start with high quality data, that will be used to make data driven forecasting. </p>
 
 <h2>Data Transformation Models</h2>
+<p>To make the predictions a transformation model was trained using the previous year’s information. It was split to create training and testing data sets. Once the models were trained they were applied to the data sets to create the year that are not current available. </p>
+<p>To execute the code, fill in the appropriate S3 bucket information in the “projectAdminInfo.py” file. The other files can be run as is. </p>
 
 <h2>Infographic</h2>
 <img src="https://jahgd.com//va/DataFlowChart.png" width="900px" height="auto" alt="Statewide Chronic Condition Trends Data Pipeline">
@@ -66,6 +68,11 @@ After all the trend data has been generated, the system will build a file for vi
 <p>To download the code please follow this <a href="https://github.com/jhallgd/Statewide-Chronic-Condition-Trends.git" target="_blank">GitHub Link</a></p>
 
 <h2>Investigation</h2> 
+<p>I believe that this pipeline is a great first step into predicting Chronic Conditions throughout the country. I am happy with the results of this pilot project. I believe that it gives a slight indication of the future trends of chronic conditions. I hope that with more time and information it can grow and give value to communities.
+ To grow this project will require more information than possible from other sources. Information could include population statistics, environmental factors, quality of life, and other health informatics. Using this information, with more server resources, could help provide a more accurate reading of future data. Finding create ways of what factors could affect the chronic conditions could provide innovative results. </p>
+<p>Large events, like COVID, will have a big impact on how the pipeline can perform with accuracy. As of 2023, the information is not available through CMS. I would be interested to see how that would affect the training models. </p> 
+<p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine the future trends. 
+</p>
 
 
 
