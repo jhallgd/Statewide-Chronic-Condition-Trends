@@ -25,7 +25,7 @@ dag = DAG(
     'CMS_Chronic_Condition_Dag',
     default_args=default_args,
     description='Ingest, transform, visualize CMS data',
-    schedule_interval=timedelta(days=1),
+    schedule_interval='@once',
 )
 
 ingest_etl = PythonOperator(

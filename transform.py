@@ -10,7 +10,11 @@ def transform_data():
 
     # S3 bucket directory (data lake)
     # Get data from S3 bucket as a pickle file
+
+    #Remove the incomplete CC datasets
     raw_data = np.load(s3.open('{}/{}'.format(PAI.dataLakeLocation, 'data.pkl')), allow_pickle=True)
+    raw_data = raw_data[raw_data['Bene_Cond'] != 'Autism Spectrum Disorders']
+    raw_data = raw_data[raw_data['Bene_Cond'] != 'HIV/AIDS']
 
     # Get the list of chronic conditions
     chronicConditions = raw_data.Bene_Cond.unique()
