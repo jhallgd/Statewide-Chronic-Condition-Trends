@@ -70,7 +70,7 @@ After all the trend data has been generated, the system will build a file for vi
 <h2>Investigation</h2> 
 <p>I believe that this pipeline is a great first step into predicting Chronic Conditions throughout the country. I am happy with the results of this pilot project. I believe that it gives a slight indication of the future trends of chronic conditions. I hope that with more time and information it can grow and give value to communities.
  To grow this project will require more information than possible from other sources. Information could include population statistics, environmental factors, quality of life, and other health informatics. Using this information, with more server resources, could help provide a more accurate reading of future data. Finding ways of what factors could affect chronic conditions could provide innovative results. </p>
-<p>Large events, like COVID, will have a big impact on how the pipeline can perform with accuracy. As of 2023, the information is not available through CMS. I would be interested to see how that would affect the training models. </p> 
+<p>Large events, like COVID-19, will have a big impact on how the pipeline can perform with accuracy. As of 2023, the information is not available through CMS. I would be interested to see how that would affect the training models. </p> 
 <p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine future trends. 
 </p>
 
