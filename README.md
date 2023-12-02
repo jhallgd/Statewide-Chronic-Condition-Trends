@@ -1,5 +1,6 @@
 <h1>Statewide Chronic Condition Trends</h2>
-<h3>VTID: jhallgd</h3>
+<h3>ECE 5984: Data Engineering Project</h3>
+<h3>Jacob Hall (jhallgd)</h3>
 <h2>Project’s Function</h2>
 <p>The lifecycle of the Statewide Chronic Condition Trend data pipeline is to collect, clean, store, analyze, predict, and visualize healthcare data throughout the United States. The main goal is to provide future trends of chronic conditions based on historical data and visualize the information in an interactive dashboard. As more data is available, the pipeline can add new information and then use the information to train its algorithm to make better predictions with future data. Once completed this pipeline could be used to help determine future trends across the country and help populations with growing levels of chronic conditions. </p>
 <p>Once the pipeline is complete, the goal is to have an integrated data pipeline process. Once that runs all process back-to-back without the need of break data flow. The system will make data driven decisions correctly provide high-value trends and fill the whole of unavailable data sets. I also hope to gain a better understanding of the data pipeline process and gain knowledge to build similar or more advanced systems in the future. </p>
@@ -73,6 +74,8 @@ After all the trend data has been generated, the system will build a file for vi
 <p>Large events, like COVID-19, will have a big impact on how the pipeline can perform with accuracy. As of 2023, the information is not available through CMS. I would be interested to see how that would affect the training models. </p> 
 <p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine future trends. 
 </p>
+
+<img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
 
 
 
