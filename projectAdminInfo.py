@@ -3,37 +3,35 @@ from s3fs.core import S3FileSystem
 import numpy as np
 
 #Enter Bucket Name here
-bucketName = ""
+bucketName = "ece5984-bucket-jhallgd"
 
-#Enter your S3 directory of your data Lake. Without the last "/"
-dataLakeLocation = ""
+#Enter your S3 directory of your data Lake without the last "/"
+dataLakeLocation = "s3://ece5984-bucket-jhallgd/CCProject/DataLake"
 
-#Enter your S3 directory of your data warehouse. Without the last "/"
-dataWareHouseLocation = ""
+#Enter your S3 directory of your data warehouse without the last "/"
+dataWareHouseLocation = "s3://ece5984-bucket-jhallgd/CCProject/DataWarehouse"
 
 #Enter your S3 directory of your train test folder here. Without the last "/"
-train_test = ""
+train_test = "s3://ece5984-bucket-jhallgd/CCProject/TestTrain"
 
 #Enter your S3 directory of your training model folder here. Without the last "/"
-model = ""
+model = "s3://ece5984-bucket-jhallgd/CCProject/Models"
 
-#Enter model directory of your training model folder here. Without the last "/"
-modelDirectory = ""
-
-#Enter your S3 directory of your prediction folder here. Without the last "/"
-prediction = ""
+#Enter the model Directory folder
+modelDirectory = "CCProject/Models/"
 
 #Enter your S3 directory of your prediction folder here. Without the last "/"
-visualization = ""
+prediction = "s3://ece5984-bucket-jhallgd/CCProject/Predictions"
 
+#Database information
+visualization = "s3://ece5984-bucket-jhallgd/CCProject/DataVisualization"
 
-
-#Shared Functions
+# Shared Functions
 def getFileNames():
     s3 = S3FileSystem()
     lake_data = np.load(s3.open('{}/{}'.format(dataLakeLocation, 'data.pkl')), allow_pickle=True)
 
-    #Remove Incomplete Data Sets
+    # Remove Incomplete Data Sets
     lake_data = lake_data[lake_data['Bene_Cond'] != 'Autism Spectrum Disorders']
     lake_data = lake_data[lake_data['Bene_Cond'] != 'HIV/AIDS']
 
@@ -52,7 +50,7 @@ def getFileNameDictionary():
     s3 = S3FileSystem()
     lake_data = np.load(s3.open('{}/{}'.format(dataLakeLocation, 'data.pkl')), allow_pickle=True)
 
-    #Remove Incomplete Data Sets
+    # Remove Incomplete Data Sets
     lake_data = lake_data[lake_data['Bene_Cond'] != 'Autism Spectrum Disorders']
     lake_data = lake_data[lake_data['Bene_Cond'] != 'HIV/AIDS']
 
