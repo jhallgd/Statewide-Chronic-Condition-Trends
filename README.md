@@ -1,5 +1,5 @@
 <h1>Statewide Chronic Condition Trends</h2>
-
+<h3>VTID: jhallgd</h3>
 <h2>Project’s Function</h2>
 <p>The lifecycle of the Statewide Chronic Condition Trend data pipeline is to collect, clean, store, analyze, predict, and visualize healthcare data throughout the United States. The main goal is to provide future trends of chronic conditions based on historical data and visualize the information in an interactive dashboard. As more data is available, the pipeline can add new information and then use the information to train its algorithm to make better predictions with future data. Once completed this pipeline could be used to help determine future trends across the country and help populations with growing levels of chronic conditions. </p>
 <p>Once the pipeline is complete, the goal is to have an integrated data pipeline process. Once that runs all process back-to-back without the need of break data flow. The system will make data driven decisions correctly provide high-value trends and fill the whole of unavailable data sets. I also hope to gain a better understanding of the data pipeline process and gain knowledge to build similar or more advanced systems in the future. </p>
@@ -55,7 +55,7 @@ After all the trend data has been generated, the system will build a file for vi
 </ul>
 
 <h2>Data Quality Assessment</h2>
-<p>I chose this data set because I believe the Centers for Medicare & Medicaid Services can provide accurate, complete, valid, and consistent information regarding Medicare beneficiaries. Using this information at the core of my pipeline will ensure that I start with high-quality data, that will be used to make data-driven forecasting. </p>
+<p>To perform the data quality assessment, I first determined the data providence of the information I gathered into the data lake. The information was collected from the Centers for Medicare & Medicaid Services. This dataset is based on data collected from CMS administrative enrollment and claims data for Original Medicare beneficiaries. The information provided is then cleaned, removing unnecessary information, and reformatted to be used for machine learning, the transformed datasets are stored in the data warehouse. The change is made to avoid applying stress to the AWS server while building, training, and implementing the learning modules. I believe the Centers for Medicare & Medicaid Services can provide accurate, complete, valid, and consistent information regarding Medicare beneficiaries. Using this information at the core of my pipeline will ensure that I start with high-quality data, that will be used to make data-driven forecasting. No other datasets were used for this project.</p>
 
 <h2>Data Transformation Models</h2>
 <p>To make the predictions a transformation model was trained using the previous year’s information. It was split to create training and testing data sets. Once the models were trained they were applied to the data sets to create the year that are not currently available. </p>
@@ -74,6 +74,7 @@ After all the trend data has been generated, the system will build a file for vi
 <p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine future trends. 
 </p>
 
+<img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
 <img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
 
 
