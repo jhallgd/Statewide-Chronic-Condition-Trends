@@ -3,7 +3,7 @@
 <h3>Jacob Hall (jhallgd)</h3>
 <h2>Project’s Function</h2>
 <p>The lifecycle of the Statewide Chronic Condition Trend data pipeline is to collect, clean, store, analyze, predict, and visualize healthcare data throughout the United States. The main goal is to provide future trends of chronic conditions based on historical data and visualize the information in an interactive dashboard. As more data is available, the pipeline can add new information and then use the information to train its algorithm to make better predictions with future data. Once completed this pipeline could be used to help determine future trends across the country and help populations with growing levels of chronic conditions. </p>
-<p>Once the pipeline is complete, the goal is to have an integrated data pipeline process. Once that runs all process back-to-back without the need of break data flow. The system will make data driven decisions correctly provide high-value trends and fill the whole of unavailable data sets. I also hope to gain a better understanding of the data pipeline process and gain knowledge to build similar or more advanced systems in the future. </p>
+<p>Once the pipeline is complete, the goal is to have an integrated data pipeline process. Once that runs all processes back-to-back without the need to break data flow. The system will make data-driven decisions correctly provide high-value trends and fill the whole of unavailable data sets. I also hope to gain a better understanding of the data pipeline process and gain knowledge to build similar or more advanced systems in the future. </p>
 
 <h2>Dataset</h2>
 <p>This pipeline utilizes the Specific Chronic Conditions dataset provided by the <a href="https://data.cms.gov/medicare-chronic-conditions/specific-chronic-conditions" target ="_blank">Centers for Medicare & Medicaid Services</a>. The dataset stores information about 21 chronic conditions among Original Medicare beneficiaries. The information is stored by state and by age group, for the purposes of this project only state information has been used.</p> 
@@ -29,7 +29,7 @@
 <li>Osteoporosis</li>
 <li>Schizophrenia and Other Psychotic Disorders</li>
 <li>Stroke</li></ul>
-<p>To view the full CMS data dictionary please <a href="https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>. The key attributes that I will be focusing it this project are: </p><ul>
+<p>To view the full CMS data dictionary please <a href="https://data.cms.gov/resources/specific-chronic-conditions-data-dictionary" target="_blank">click here</a>. The key attributes that I will be focusing in this project are: </p><ul>
 <li>Beneficiary Geographic Code (Bene_Geo_Cd) the State where the beneficiary resides.</li>
 <li>Beneficiary Chronic Condition (Bene_Cond) the Chronic condition identifier. </li>
 <li>Emergency Room Visits per 1,000 Beneficiaries (ER_Visits_Per_1000_Benes) Emergency department visits are presented as the number of visits per 1,000 beneficiaries.</li></ul>
@@ -37,10 +37,10 @@
 
 <h2>Pipeline / Architecture</h2>
 <p>The pipeline that I have decided to follow for this project is the “Data Pipeline 1 Batch – ML – Visualization” method. It meets the needs for my goal of building a system that collects, cleans, analyzes, and visualizes data. </p>
-<p>The pipeline begins with the source data provided by Data.CMS.gov. The data will be imported from their database in the form of a JSON batch file. Multiple imports will have to be made for the previous years. The data will be imported by a command of a Python document. Once the information is imported, the raw data will be stored in an Amazon S3 folder, serving as the data lake, in a large batch document in a pickle file format.<br>
-After the raw data has been stored, a Python script using the Panda’s library will clean and transform the data. The script will be searching for rows and columns that will not be used in the later stages of the pipeline. The script will also be cleaning the data of any outliers or missing data points. The data set will also be rearange into a better format for machine learning. The files will be grouped by chronic condition and store all the previous years. Once all the information has been cleaned and transfromed the new data files will be stored in a separate Amazon S3 storage folder representing the Data Warehouse. </p>
-<p>The pipeline then uses the new data to train a model in determining the level of chronic conditions in data that has not yet been provided. The predicitons will be trained using historical data to predict the upcomming year. Once the model has been trained appropriately, then it will apply itself to the dataset, the trend datasets that will be stored in new files inside Amazon’s S3 bucket. 
-After all the trend data has been generated, the system will build a file for visualization software to point to. A dashboard will display the historic data and future trend information. Interactive tools will be available to the user to drill down into state levels. </p>
+<p>The pipeline begins with the source data provided by Data.CMS.gov. The data will be imported from their database in the form of a JSON batch file. Multiple imports will have to be made for the previous years. The data will be imported by a command of a Python document. Once the information is imported, the raw data is stored in an Amazon S3 folder, serving as the data lake, in a large batch document in a pickle file format.<br>
+After the raw data is stored, a Python script using Panda’s library cleans and transforms the data. The script searches for rows and columns that will not be used in the later stages of the pipeline. The script will also clean the data of any outliers or missing data points. The data set is reranged into a better format for machine learning. The files are grouped by chronic condition and stored together with all the previous years. Once all the information has been cleaned and transformed the new data files are stored in a separate Amazon S3 storage folder representing the Data Warehouse. </p>
+<p>The pipeline then uses the new data to train a model to determine the level of chronic conditions in data that has not yet been provided. The predictions are trained using historical data to predict the upcoming year. Once the model has been trained appropriately, it will apply itself to the dataset, the trend datasets that will be stored in new files inside Amazon’s S3 bucket. 
+After all the trend data has been generated, the system will build a file for visualization software to point to. A dashboard will display the historical data and future trend information. Interactive tools will be available to the user to drill down into state levels. </p>
 
 <p><b>Pipeline Tools</b></p>
 <ul>
@@ -75,8 +75,8 @@ After all the trend data has been generated, the system will build a file for vi
 <p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine future trends. 
 </p>
 
-<img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
+<img src="https://jahgd.com//va/ccdashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
 
-
+<a href="https://public.tableau.com/views/ChronicConditions_17015398817220/Overall?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" target="_blank">Click here to view the interactive dashboard</a>
 
 
