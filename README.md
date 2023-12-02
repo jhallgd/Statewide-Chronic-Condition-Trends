@@ -60,7 +60,29 @@ After all the trend data has been generated, the system will build a file for vi
 
 <h2>Data Transformation Models</h2>
 <p>To make the predictions a transformation model was trained using the previous year’s information. It was split to create training and testing data sets. Once the models were trained they were applied to the data sets to create the year that are not currently available. </p>
-<p>To execute the code, fill in the appropriate S3 bucket information in the “projectAdminInfo.py” file. The other files can be run as is. </p>
+<p>To execute the code:</p>
+<p>Fill in the appropriate S3 bucket information in the “projectAdminInfo.py” file. The other files can be run as is. (The file has been filled out for the Virginia Tech Project using University-provided S3 buckets).</p>
+<p>Install Plugins
+  <ul>
+<li>pandas-datareader</li>
+<li>U scikit-learn</li>
+<li>boto3</li></ul></p>
+
+<p>Add files to dag folder
+  <ul>
+<li>dag.py</li>
+<li>projectAdminInfo.py</li>
+<li>batch_ingest_CMS.py</li>
+<li>transform.py</li>
+<li>featureExtraction_CMS.py</li>
+<li>build_train_model_CMS.py</li>
+<li>predict_CMS.py</li>
+<li>load_db_CMS.py</li></ul></p>
+
+<p>Run Airflow & Trigger CMS Dag</p>
+
+<p>Download the .csv from the data visualization folder. ("DataVisualization")</p>
+
 
 <h2>Infographic</h2>
 <img src="https://jahgd.com//va/DataFlowChart.png" width="900px" height="auto" alt="Statewide Chronic Condition Trends Data Pipeline">
