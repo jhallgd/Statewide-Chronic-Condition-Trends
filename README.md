@@ -81,7 +81,7 @@ After all the trend data has been generated, the system will build a file for vi
 
 <p>Run Airflow & Trigger CMS Dag</p>
 
-<p>Download the .csv from the data visualization folder. ("DataVisualization")</p>
+<p>Download 'vis-data.csv' from the data visualization folder. ("DataVisualization")</p>
 
 
 <h2>Infographic</h2>
