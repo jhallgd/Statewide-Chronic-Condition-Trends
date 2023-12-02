@@ -74,7 +74,6 @@ After all the trend data has been generated, the system will build a file for vi
 <p>As the next step, I would begin by adding population data to the pipeline to help train and build the learning algorithms and help determine future trends. 
 </p>
 
-<img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
-<img src="https://jahgd.com//va/cc-dashboard.png" width="900px" height="auto" alt="Statewide Chronic Condition Dashboard Overview">
+
 
 
