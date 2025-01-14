@@ -3,28 +3,28 @@ from s3fs.core import S3FileSystem
 import numpy as np
 
 #Enter Bucket Name here
-bucketName = "ece5984-bucket-jhallgd"
+bucketName = ""
 
 #Enter your S3 directory of your data Lake without the last "/"
-dataLakeLocation = "s3://ece5984-bucket-jhallgd/CCProject/DataLake"
+dataLakeLocation = ""
 
 #Enter your S3 directory of your data warehouse without the last "/"
-dataWareHouseLocation = "s3://ece5984-bucket-jhallgd/CCProject/DataWarehouse"
+dataWareHouseLocation = ""
 
 #Enter your S3 directory of your train test folder here. Without the last "/"
-train_test = "s3://ece5984-bucket-jhallgd/CCProject/TestTrain"
+train_test = ""
 
 #Enter your S3 directory of your training model folder here. Without the last "/"
-model = "s3://ece5984-bucket-jhallgd/CCProject/Models"
+model = ""
 
 #Enter the model Directory folder
-modelDirectory = "CCProject/Models/"
+modelDirectory = ""
 
 #Enter your S3 directory of your prediction folder here. Without the last "/"
-prediction = "s3://ece5984-bucket-jhallgd/CCProject/Predictions"
+prediction = ""
 
 #Database information
-visualization = "s3://ece5984-bucket-jhallgd/CCProject/DataVisualization"
+visualization = ""
 
 # Shared Functions
 def getFileNames():
