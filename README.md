@@ -52,7 +52,7 @@ python start_local.py
 
 ## License
 
-This project is licensed under the Jacob Hall License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Data Pipeline Infographic
 ![Data Pipeline Infographic](_images/FA.png)
